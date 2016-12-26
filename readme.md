@@ -23,6 +23,7 @@ This container runs the MySQL database, which is mainly governed by environment 
 ## Redis
 
 This is a basic Redis container for handling activities that you may need Redis for.  There is a persistent volume for holding the Redis cache data. 
+This is also used for PHP session handling. The FPM Dockerfile defines the pecl call to install the redis module and adds session configurations to handle this.
 
 # Usage
 

@@ -85,6 +85,10 @@ if [ $# -gt 0 ];then
             $MYSQL \
             mysqldump -u$DB_ROOT_USER -p$DB_ROOT_PASSWORD "$@"
 
+	# Put in a command for redis-cli here
+
+
+
     # Else, pass-thru args to docker-compose
     else
         $COMPOSE "$@"

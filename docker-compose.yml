@@ -41,7 +41,7 @@ services:
             - test4
 
     redis:
-        image: redis:alpine
+        image: redis:3.2
         volumes:
             - test4_redisdata:/data
         networks:
