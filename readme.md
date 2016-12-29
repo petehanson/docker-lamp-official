@@ -27,6 +27,18 @@ This is also used for PHP session handling. The FPM Dockerfile defines the pecl 
 
 # Usage
 
+You can start the stack by starting in the folder that contains the docker-compose.yml file running:
+ 
+ docker-compose up
+
+Note: This feature is not updated yet. 
 The primary usage is handled through the ./develop script. It is a wrapper for the docker-compose script, including adding in environment varaibles that docker-compose requires along with other options and shorthands to make things easier.  Below area list of options on what the develop tool can do:
 
+
+
+# ToDo Items
+
+- Add in an container that handles cron tasks
+- Add in an Elasticsearch instance
+- Add in a toolset that handles mailing, like a postfix implementation, that takes configuration for it's relay
 
