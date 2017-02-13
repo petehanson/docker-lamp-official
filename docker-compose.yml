@@ -8,7 +8,7 @@ services:
         volumes:
             - ./code:/var/www/html
         networks:
-            - test4
+            - test4_network
 
     nginx:
         build:
@@ -19,8 +19,9 @@ services:
             - ./code:/var/www/html
         ports:
             - "80:80"
+            - "443:443"
         networks:
-            - test4
+            - test4_network
 
     mysql:
         build:
@@ -35,24 +36,24 @@ services:
             MYSQL_USER: "test4"
             MYSQL_PASSWORD: "test4"
         volumes:
-            - test4data:/var/lib/mysql
+            - test4_mysql_data:/var/lib/mysql
             - ./database:/docker-entrypoint-initdb.d
         networks:
-            - test4
+            - test4_network
 
     redis:
         image: redis:3.2
         volumes:
-            - test4_redisdata:/data
+            - test4_redis_data:/data
         networks:
-            - test4
+            - test4_network
 
     composer:
         image: composer/composer
         volumes:
             - ./code:/app
         networks:
-            - test4
+            - test4_network
 
     node:
         build:
@@ -62,13 +63,13 @@ services:
         volumes:
             - ./code:/var/www/html
         networks:
-            - test4
+            - test4_network
 
 networks:
-    test4:
+    test4_network:
         driver: "bridge"
 volumes:
-    test4data:
+    test4_mysql_data:
         driver: "local"
-    test4_redisdata:
+    test4_redis_data:
         driver: "local"

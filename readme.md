@@ -42,3 +42,5 @@ The primary usage is handled through the ./develop script. It is a wrapper for t
 - Add in an Elasticsearch instance
 - Add in a toolset that handles mailing, like a postfix implementation, that takes configuration for it's relay
 
+- Come up with a way to start the configuration of an envirnoment, putting down a basic config file and modifying key scripts to use it. 
+

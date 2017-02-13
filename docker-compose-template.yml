@@ -1,0 +1,75 @@
+version: '2'
+services:
+    fpm:
+        build:
+            context: ./docker/fpm
+            dockerfile: Dockerfile
+        image: {image_namespace}/fpm
+        volumes:
+            - {local_code_mount_point}:/var/www/html
+        networks:
+            - {prefix}_network
+
+    nginx:
+        build:
+            context: ./docker/nginx
+            dockerfile: Dockerfile
+        image: {image_namespace}/nginx
+        volumes:
+            - {local_code_mount_point}:/var/www/html
+        ports:
+            - "{container_http_port}:{host_http_port}"
+            - "{container_https_port}:{host_https_port}"
+        networks:
+            - {prefix}_network
+
+    mysql:
+        build:
+            context: ./docker/mysql
+            dockerfile: Dockerfile
+        image: {image_namespace}/mysql
+        ports:
+            - "{container_db_port}:{host_db_port}"
+        environment:
+            MYSQL_ROOT_PASSWORD: "{mysql_root_password}"
+            MYSQL_DATABASE: "{mysql_db_name}"
+            MYSQL_USER: "{mysql_db_user}"
+            MYSQL_PASSWORD: "{mysql_db_password}"
+        volumes:
+            - {prefix}_mysql_data:/var/lib/mysql
+            - {local_database_mount_point}:/docker-entrypoint-initdb.d
+        networks:
+            - {prefix}_network
+
+    redis:
+        image: redis:3.2
+        volumes:
+            - {prefix}_redis_data:/data
+        networks:
+            - {prefix}_network
+
+    composer:
+        image: composer/composer
+        volumes:
+            - {local_code_mount_point}:/app
+        networks:
+            - {prefix}_network
+
+    node:
+        build:
+            context: ./docker/node
+            dockerfile: Dockerfile
+        image: {image_namespace}/node
+        volumes:
+            - {local_code_mount_point}:/var/www/html
+        networks:
+            - {prefix}_network
+
+networks:
+    {prefix}_network:
+        driver: "bridge"
+volumes:
+    {prefix}_mysql_data:
+        driver: "local"
+    {prefix}_redis_data:
+        driver: "local"
