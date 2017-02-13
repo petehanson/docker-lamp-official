@@ -16,8 +16,8 @@ sed -e "s/{container_http_port}/$container_http_port/g" \
     -e "s/{mysql_db_name}/$mysql_db_name/g" \
     -e "s/{mysql_db_user}/$mysql_db_user/g" \
     -e "s/{mysql_db_password}/$mysql_db_password/g" \
-    < docker-compose-template.yml > docker-compose.yml;
+    < ./docker/docker-compose-template.yml > docker-compose.yml;
 
-sed -e "s/{image_namespace}/$image_namespace/g" < build-template.sh > build.sh;
+sed -e "s/{image_namespace}/$image_namespace/g" < ./docker/build-template.sh > build.sh;
 
 
