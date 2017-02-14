@@ -65,6 +65,16 @@ services:
         networks:
             - {prefix}_network
 
+    cron:
+        build:
+            context: ./docker/cron
+            dockerfile: Dockerfile
+        image: {image_namespace}/cron
+        volumes:
+            - ./cron:/etc/cron.d
+        networks:
+            - {prefix}_network
+
 networks:
     {prefix}_network:
         driver: "bridge"

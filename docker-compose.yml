@@ -65,6 +65,16 @@ services:
         networks:
             - test4_network
 
+    cron:
+        build:
+            context: ./docker/cron
+            dockerfile: Dockerfile
+        image: petehanson/cron
+        volumes:
+            - ./cron:/etc/cron.d
+        networks:
+            - test4_network
+
 networks:
     test4_network:
         driver: "bridge"
