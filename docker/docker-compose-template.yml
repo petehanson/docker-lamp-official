@@ -71,7 +71,7 @@ services:
             dockerfile: Dockerfile
         image: {image_namespace}/cron
         volumes:
-            - ./cron:/etc/cron.d
+            - {local_cron_mount_point}:/etc/cron.d
         networks:
             - {prefix}_network
 

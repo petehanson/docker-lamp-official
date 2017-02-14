@@ -38,7 +38,7 @@ The primary usage is handled through the ./develop script. It is a wrapper for t
 
 # ToDo Items
 
-- Add in an container that handles cron tasks
+#- Add in an container that handles cron tasks
 - Add in an Elasticsearch instance
 - Add in a toolset that handles mailing, like a postfix implementation, that takes configuration for it's relay
 

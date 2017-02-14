@@ -11,6 +11,7 @@ sed -e "s/{container_http_port}/$container_http_port/g" \
     -e "s/{image_namespace}/$image_namespace/g" \
     -e "s/{local_code_mount_point}/$local_code_mount_point/g" \
     -e "s/{local_database_mount_point}/$local_database_mount_point/g" \
+    -e "s/{local_cron_mount_point}/$local_cron_mount_point/g" \
     -e "s/{mysql_root_user}/$mysql_root_user/g" \
     -e "s/{mysql_root_password}/$mysql_root_password/g" \
     -e "s/{mysql_db_name}/$mysql_db_name/g" \
