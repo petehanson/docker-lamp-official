@@ -1,0 +1,8 @@
+{
+  "name": "sample-app",
+  "version": "0.0.1",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "gulp": "^3.9.1"
+  }
+}
