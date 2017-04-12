@@ -27,9 +27,17 @@ This is also used for PHP session handling. The FPM Dockerfile defines the pecl 
 
 # Usage
 
+## Initialization
+
+Run the init.sh script to create a customized build.sh and docker-compose.yml file. The init script uses values from environment.cfg to define various elements of the environment you are defining and blends them into those files. 
+
+Once init is set, then run build.sh to build out the docker containers you will need.
+
 You can start the stack by starting in the folder that contains the docker-compose.yml file running:
  
  docker-compose up
+
+Once the stack is running, you can visit http://localhost/ to get a very basic index page with a few sample test files in place, showing how sessions can be managed in redis and PDO connections to a mysql container. 
 
 Note: This feature is not updated yet. 
 The primary usage is handled through the ./develop script. It is a wrapper for the docker-compose script, including adding in environment varaibles that docker-compose requires along with other options and shorthands to make things easier.  Below area list of options on what the develop tool can do:
