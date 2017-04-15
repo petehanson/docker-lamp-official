@@ -75,6 +75,16 @@ services:
         networks:
             - {prefix}_network
 
+    mailhog:
+        build:
+            context: ./docker/mailhog
+            dockerfile: Dockerfile
+        image: {image_namespace}/mailhog
+        ports:
+            - "8025:8025"
+        networks:
+            - {prefix}_network
+
 networks:
     {prefix}_network:
         driver: "bridge"
