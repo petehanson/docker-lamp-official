@@ -7,3 +7,4 @@ RUN { \
     echo 'session.save_handler = redis'; \
     echo 'session.save_path = tcp://redis:6379'; \
 } >> /usr/local/etc/php/conf.d/docker-php-ext-redis.ini
+COPY php.ini /usr/local/etc/php/php.ini
