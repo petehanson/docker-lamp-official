@@ -92,6 +92,12 @@ if [ $# -gt 0 ];then
             $DB \
             mysqldump -u$mysql_root_user -p$mysql_root_password "$@"
 
+	# runs the bash shell on a defined container
+	elif [ "$1" == "shell" ]; then
+		shift 1
+		$COMPOSE run --rm $1 /bin/bash
+
+
 	# Put in a command for redis-cli here
 
 
